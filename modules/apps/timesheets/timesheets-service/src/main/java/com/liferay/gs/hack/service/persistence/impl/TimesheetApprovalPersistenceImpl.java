@@ -1487,6 +1487,519 @@ public class TimesheetApprovalPersistenceImpl extends BasePersistenceImpl<Timesh
 	private static final String _FINDER_COLUMN_UUID_C_UUID_2 = "timesheetApproval.uuid = ? AND ";
 	private static final String _FINDER_COLUMN_UUID_C_UUID_3 = "(timesheetApproval.uuid IS NULL OR timesheetApproval.uuid = '') AND ";
 	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 = "timesheetApproval.companyId = ?";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_TIMESHEETID =
+		new FinderPath(TimesheetApprovalModelImpl.ENTITY_CACHE_ENABLED,
+			TimesheetApprovalModelImpl.FINDER_CACHE_ENABLED,
+			TimesheetApprovalImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByTimesheetId",
+			new String[] {
+				Long.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIMESHEETID =
+		new FinderPath(TimesheetApprovalModelImpl.ENTITY_CACHE_ENABLED,
+			TimesheetApprovalModelImpl.FINDER_CACHE_ENABLED,
+			TimesheetApprovalImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByTimesheetId",
+			new String[] { Long.class.getName() },
+			TimesheetApprovalModelImpl.TIMESHEETID_COLUMN_BITMASK |
+			TimesheetApprovalModelImpl.CREATEDATE_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_TIMESHEETID = new FinderPath(TimesheetApprovalModelImpl.ENTITY_CACHE_ENABLED,
+			TimesheetApprovalModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByTimesheetId",
+			new String[] { Long.class.getName() });
+
+	/**
+	 * Returns all the timesheet approvals where timesheetId = &#63;.
+	 *
+	 * @param timesheetId the timesheet ID
+	 * @return the matching timesheet approvals
+	 */
+	@Override
+	public List<TimesheetApproval> findByTimesheetId(long timesheetId) {
+		return findByTimesheetId(timesheetId, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the timesheet approvals where timesheetId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link TimesheetApprovalModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param timesheetId the timesheet ID
+	 * @param start the lower bound of the range of timesheet approvals
+	 * @param end the upper bound of the range of timesheet approvals (not inclusive)
+	 * @return the range of matching timesheet approvals
+	 */
+	@Override
+	public List<TimesheetApproval> findByTimesheetId(long timesheetId,
+		int start, int end) {
+		return findByTimesheetId(timesheetId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the timesheet approvals where timesheetId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link TimesheetApprovalModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param timesheetId the timesheet ID
+	 * @param start the lower bound of the range of timesheet approvals
+	 * @param end the upper bound of the range of timesheet approvals (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching timesheet approvals
+	 */
+	@Override
+	public List<TimesheetApproval> findByTimesheetId(long timesheetId,
+		int start, int end,
+		OrderByComparator<TimesheetApproval> orderByComparator) {
+		return findByTimesheetId(timesheetId, start, end, orderByComparator,
+			true);
+	}
+
+	/**
+	 * Returns an ordered range of all the timesheet approvals where timesheetId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link TimesheetApprovalModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param timesheetId the timesheet ID
+	 * @param start the lower bound of the range of timesheet approvals
+	 * @param end the upper bound of the range of timesheet approvals (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param retrieveFromCache whether to retrieve from the finder cache
+	 * @return the ordered range of matching timesheet approvals
+	 */
+	@Override
+	public List<TimesheetApproval> findByTimesheetId(long timesheetId,
+		int start, int end,
+		OrderByComparator<TimesheetApproval> orderByComparator,
+		boolean retrieveFromCache) {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIMESHEETID;
+			finderArgs = new Object[] { timesheetId };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_TIMESHEETID;
+			finderArgs = new Object[] { timesheetId, start, end, orderByComparator };
+		}
+
+		List<TimesheetApproval> list = null;
+
+		if (retrieveFromCache) {
+			list = (List<TimesheetApproval>)finderCache.getResult(finderPath,
+					finderArgs, this);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (TimesheetApproval timesheetApproval : list) {
+					if ((timesheetId != timesheetApproval.getTimesheetId())) {
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_TIMESHEETAPPROVAL_WHERE);
+
+			query.append(_FINDER_COLUMN_TIMESHEETID_TIMESHEETID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(TimesheetApprovalModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(timesheetId);
+
+				if (!pagination) {
+					list = (List<TimesheetApproval>)QueryUtil.list(q,
+							getDialect(), start, end, false);
+
+					Collections.sort(list);
+
+					list = Collections.unmodifiableList(list);
+				}
+				else {
+					list = (List<TimesheetApproval>)QueryUtil.list(q,
+							getDialect(), start, end);
+				}
+
+				cacheResult(list);
+
+				finderCache.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first timesheet approval in the ordered set where timesheetId = &#63;.
+	 *
+	 * @param timesheetId the timesheet ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching timesheet approval
+	 * @throws NoSuchTimesheetApprovalException if a matching timesheet approval could not be found
+	 */
+	@Override
+	public TimesheetApproval findByTimesheetId_First(long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator)
+		throws NoSuchTimesheetApprovalException {
+		TimesheetApproval timesheetApproval = fetchByTimesheetId_First(timesheetId,
+				orderByComparator);
+
+		if (timesheetApproval != null) {
+			return timesheetApproval;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("timesheetId=");
+		msg.append(timesheetId);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchTimesheetApprovalException(msg.toString());
+	}
+
+	/**
+	 * Returns the first timesheet approval in the ordered set where timesheetId = &#63;.
+	 *
+	 * @param timesheetId the timesheet ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching timesheet approval, or <code>null</code> if a matching timesheet approval could not be found
+	 */
+	@Override
+	public TimesheetApproval fetchByTimesheetId_First(long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator) {
+		List<TimesheetApproval> list = findByTimesheetId(timesheetId, 0, 1,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last timesheet approval in the ordered set where timesheetId = &#63;.
+	 *
+	 * @param timesheetId the timesheet ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching timesheet approval
+	 * @throws NoSuchTimesheetApprovalException if a matching timesheet approval could not be found
+	 */
+	@Override
+	public TimesheetApproval findByTimesheetId_Last(long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator)
+		throws NoSuchTimesheetApprovalException {
+		TimesheetApproval timesheetApproval = fetchByTimesheetId_Last(timesheetId,
+				orderByComparator);
+
+		if (timesheetApproval != null) {
+			return timesheetApproval;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("timesheetId=");
+		msg.append(timesheetId);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchTimesheetApprovalException(msg.toString());
+	}
+
+	/**
+	 * Returns the last timesheet approval in the ordered set where timesheetId = &#63;.
+	 *
+	 * @param timesheetId the timesheet ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching timesheet approval, or <code>null</code> if a matching timesheet approval could not be found
+	 */
+	@Override
+	public TimesheetApproval fetchByTimesheetId_Last(long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator) {
+		int count = countByTimesheetId(timesheetId);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<TimesheetApproval> list = findByTimesheetId(timesheetId,
+				count - 1, count, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the timesheet approvals before and after the current timesheet approval in the ordered set where timesheetId = &#63;.
+	 *
+	 * @param timesheetApprovalId the primary key of the current timesheet approval
+	 * @param timesheetId the timesheet ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next timesheet approval
+	 * @throws NoSuchTimesheetApprovalException if a timesheet approval with the primary key could not be found
+	 */
+	@Override
+	public TimesheetApproval[] findByTimesheetId_PrevAndNext(
+		long timesheetApprovalId, long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator)
+		throws NoSuchTimesheetApprovalException {
+		TimesheetApproval timesheetApproval = findByPrimaryKey(timesheetApprovalId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			TimesheetApproval[] array = new TimesheetApprovalImpl[3];
+
+			array[0] = getByTimesheetId_PrevAndNext(session, timesheetApproval,
+					timesheetId, orderByComparator, true);
+
+			array[1] = timesheetApproval;
+
+			array[2] = getByTimesheetId_PrevAndNext(session, timesheetApproval,
+					timesheetId, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected TimesheetApproval getByTimesheetId_PrevAndNext(Session session,
+		TimesheetApproval timesheetApproval, long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(4 +
+					(orderByComparator.getOrderByConditionFields().length * 3) +
+					(orderByComparator.getOrderByFields().length * 3));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_TIMESHEETAPPROVAL_WHERE);
+
+		query.append(_FINDER_COLUMN_TIMESHEETID_TIMESHEETID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(TimesheetApprovalModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(timesheetId);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(timesheetApproval);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<TimesheetApproval> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the timesheet approvals where timesheetId = &#63; from the database.
+	 *
+	 * @param timesheetId the timesheet ID
+	 */
+	@Override
+	public void removeByTimesheetId(long timesheetId) {
+		for (TimesheetApproval timesheetApproval : findByTimesheetId(
+				timesheetId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+			remove(timesheetApproval);
+		}
+	}
+
+	/**
+	 * Returns the number of timesheet approvals where timesheetId = &#63;.
+	 *
+	 * @param timesheetId the timesheet ID
+	 * @return the number of matching timesheet approvals
+	 */
+	@Override
+	public int countByTimesheetId(long timesheetId) {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_TIMESHEETID;
+
+		Object[] finderArgs = new Object[] { timesheetId };
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_TIMESHEETAPPROVAL_WHERE);
+
+			query.append(_FINDER_COLUMN_TIMESHEETID_TIMESHEETID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(timesheetId);
+
+				count = (Long)q.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_TIMESHEETID_TIMESHEETID_2 = "timesheetApproval.timesheetId = ?";
 
 	public TimesheetApprovalPersistenceImpl() {
 		setModelClass(TimesheetApproval.class);
@@ -1837,6 +2350,23 @@ public class TimesheetApprovalPersistenceImpl extends BasePersistenceImpl<Timesh
 
 				finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID_C, args);
 				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C,
+					args);
+			}
+
+			if ((timesheetApprovalModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIMESHEETID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						timesheetApprovalModelImpl.getOriginalTimesheetId()
+					};
+
+				finderCache.removeResult(FINDER_PATH_COUNT_BY_TIMESHEETID, args);
+				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIMESHEETID,
+					args);
+
+				args = new Object[] { timesheetApprovalModelImpl.getTimesheetId() };
+
+				finderCache.removeResult(FINDER_PATH_COUNT_BY_TIMESHEETID, args);
+				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_TIMESHEETID,
 					args);
 			}
 		}

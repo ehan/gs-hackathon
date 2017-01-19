@@ -245,6 +245,11 @@ public class TimesheetTaskDurationLocalServiceUtil {
 				   .dynamicQuery(dynamicQuery, start, end, orderByComparator);
 	}
 
+	public static java.util.List<com.liferay.gs.hack.model.TimesheetTaskDuration> getTimesheetTaskDurationByTimesheetId(
+		long timesheetId) {
+		return getService().getTimesheetTaskDurationByTimesheetId(timesheetId);
+	}
+
 	/**
 	* Returns a range of all the timesheet task durations.
 	*

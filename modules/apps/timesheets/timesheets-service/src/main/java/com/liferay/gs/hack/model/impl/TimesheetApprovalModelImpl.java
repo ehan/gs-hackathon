@@ -120,8 +120,9 @@ public class TimesheetApprovalModelImpl extends BaseModelImpl<TimesheetApproval>
 			true);
 	public static final long COMPANYID_COLUMN_BITMASK = 1L;
 	public static final long GROUPID_COLUMN_BITMASK = 2L;
-	public static final long UUID_COLUMN_BITMASK = 4L;
-	public static final long CREATEDATE_COLUMN_BITMASK = 8L;
+	public static final long TIMESHEETID_COLUMN_BITMASK = 4L;
+	public static final long UUID_COLUMN_BITMASK = 8L;
+	public static final long CREATEDATE_COLUMN_BITMASK = 16L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -365,7 +366,19 @@ public class TimesheetApprovalModelImpl extends BaseModelImpl<TimesheetApproval>
 
 	@Override
 	public void setTimesheetId(long timesheetId) {
+		_columnBitmask |= TIMESHEETID_COLUMN_BITMASK;
+
+		if (!_setOriginalTimesheetId) {
+			_setOriginalTimesheetId = true;
+
+			_originalTimesheetId = _timesheetId;
+		}
+
 		_timesheetId = timesheetId;
+	}
+
+	public long getOriginalTimesheetId() {
+		return _originalTimesheetId;
 	}
 
 	@JSON
@@ -611,6 +624,10 @@ public class TimesheetApprovalModelImpl extends BaseModelImpl<TimesheetApproval>
 
 		timesheetApprovalModelImpl._setOriginalGroupId = false;
 
+		timesheetApprovalModelImpl._originalTimesheetId = timesheetApprovalModelImpl._timesheetId;
+
+		timesheetApprovalModelImpl._setOriginalTimesheetId = false;
+
 		timesheetApprovalModelImpl._originalCompanyId = timesheetApprovalModelImpl._companyId;
 
 		timesheetApprovalModelImpl._setOriginalCompanyId = false;
@@ -787,6 +804,8 @@ public class TimesheetApprovalModelImpl extends BaseModelImpl<TimesheetApproval>
 	private long _originalGroupId;
 	private boolean _setOriginalGroupId;
 	private long _timesheetId;
+	private long _originalTimesheetId;
+	private boolean _setOriginalTimesheetId;
 	private long _companyId;
 	private long _originalCompanyId;
 	private boolean _setOriginalCompanyId;

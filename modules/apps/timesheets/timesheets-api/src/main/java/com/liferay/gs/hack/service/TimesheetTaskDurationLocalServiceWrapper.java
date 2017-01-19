@@ -258,6 +258,12 @@ public class TimesheetTaskDurationLocalServiceWrapper
 			start, end, orderByComparator);
 	}
 
+	@Override
+	public java.util.List<com.liferay.gs.hack.model.TimesheetTaskDuration> getTimesheetTaskDurationByTimesheetId(
+		long timesheetId) {
+		return _timesheetTaskDurationLocalService.getTimesheetTaskDurationByTimesheetId(timesheetId);
+	}
+
 	/**
 	* Returns a range of all the timesheet task durations.
 	*

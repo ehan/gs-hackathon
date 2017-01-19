@@ -508,6 +508,169 @@ public class TimesheetApprovalUtil {
 	}
 
 	/**
+	* Returns all the timesheet approvals where timesheetId = &#63;.
+	*
+	* @param timesheetId the timesheet ID
+	* @return the matching timesheet approvals
+	*/
+	public static List<TimesheetApproval> findByTimesheetId(long timesheetId) {
+		return getPersistence().findByTimesheetId(timesheetId);
+	}
+
+	/**
+	* Returns a range of all the timesheet approvals where timesheetId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link TimesheetApprovalModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param timesheetId the timesheet ID
+	* @param start the lower bound of the range of timesheet approvals
+	* @param end the upper bound of the range of timesheet approvals (not inclusive)
+	* @return the range of matching timesheet approvals
+	*/
+	public static List<TimesheetApproval> findByTimesheetId(long timesheetId,
+		int start, int end) {
+		return getPersistence().findByTimesheetId(timesheetId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the timesheet approvals where timesheetId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link TimesheetApprovalModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param timesheetId the timesheet ID
+	* @param start the lower bound of the range of timesheet approvals
+	* @param end the upper bound of the range of timesheet approvals (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching timesheet approvals
+	*/
+	public static List<TimesheetApproval> findByTimesheetId(long timesheetId,
+		int start, int end,
+		OrderByComparator<TimesheetApproval> orderByComparator) {
+		return getPersistence()
+				   .findByTimesheetId(timesheetId, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns an ordered range of all the timesheet approvals where timesheetId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link TimesheetApprovalModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param timesheetId the timesheet ID
+	* @param start the lower bound of the range of timesheet approvals
+	* @param end the upper bound of the range of timesheet approvals (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @param retrieveFromCache whether to retrieve from the finder cache
+	* @return the ordered range of matching timesheet approvals
+	*/
+	public static List<TimesheetApproval> findByTimesheetId(long timesheetId,
+		int start, int end,
+		OrderByComparator<TimesheetApproval> orderByComparator,
+		boolean retrieveFromCache) {
+		return getPersistence()
+				   .findByTimesheetId(timesheetId, start, end,
+			orderByComparator, retrieveFromCache);
+	}
+
+	/**
+	* Returns the first timesheet approval in the ordered set where timesheetId = &#63;.
+	*
+	* @param timesheetId the timesheet ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching timesheet approval
+	* @throws NoSuchTimesheetApprovalException if a matching timesheet approval could not be found
+	*/
+	public static TimesheetApproval findByTimesheetId_First(long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator)
+		throws com.liferay.gs.hack.exception.NoSuchTimesheetApprovalException {
+		return getPersistence()
+				   .findByTimesheetId_First(timesheetId, orderByComparator);
+	}
+
+	/**
+	* Returns the first timesheet approval in the ordered set where timesheetId = &#63;.
+	*
+	* @param timesheetId the timesheet ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching timesheet approval, or <code>null</code> if a matching timesheet approval could not be found
+	*/
+	public static TimesheetApproval fetchByTimesheetId_First(long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator) {
+		return getPersistence()
+				   .fetchByTimesheetId_First(timesheetId, orderByComparator);
+	}
+
+	/**
+	* Returns the last timesheet approval in the ordered set where timesheetId = &#63;.
+	*
+	* @param timesheetId the timesheet ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching timesheet approval
+	* @throws NoSuchTimesheetApprovalException if a matching timesheet approval could not be found
+	*/
+	public static TimesheetApproval findByTimesheetId_Last(long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator)
+		throws com.liferay.gs.hack.exception.NoSuchTimesheetApprovalException {
+		return getPersistence()
+				   .findByTimesheetId_Last(timesheetId, orderByComparator);
+	}
+
+	/**
+	* Returns the last timesheet approval in the ordered set where timesheetId = &#63;.
+	*
+	* @param timesheetId the timesheet ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching timesheet approval, or <code>null</code> if a matching timesheet approval could not be found
+	*/
+	public static TimesheetApproval fetchByTimesheetId_Last(long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator) {
+		return getPersistence()
+				   .fetchByTimesheetId_Last(timesheetId, orderByComparator);
+	}
+
+	/**
+	* Returns the timesheet approvals before and after the current timesheet approval in the ordered set where timesheetId = &#63;.
+	*
+	* @param timesheetApprovalId the primary key of the current timesheet approval
+	* @param timesheetId the timesheet ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next timesheet approval
+	* @throws NoSuchTimesheetApprovalException if a timesheet approval with the primary key could not be found
+	*/
+	public static TimesheetApproval[] findByTimesheetId_PrevAndNext(
+		long timesheetApprovalId, long timesheetId,
+		OrderByComparator<TimesheetApproval> orderByComparator)
+		throws com.liferay.gs.hack.exception.NoSuchTimesheetApprovalException {
+		return getPersistence()
+				   .findByTimesheetId_PrevAndNext(timesheetApprovalId,
+			timesheetId, orderByComparator);
+	}
+
+	/**
+	* Removes all the timesheet approvals where timesheetId = &#63; from the database.
+	*
+	* @param timesheetId the timesheet ID
+	*/
+	public static void removeByTimesheetId(long timesheetId) {
+		getPersistence().removeByTimesheetId(timesheetId);
+	}
+
+	/**
+	* Returns the number of timesheet approvals where timesheetId = &#63;.
+	*
+	* @param timesheetId the timesheet ID
+	* @return the number of matching timesheet approvals
+	*/
+	public static int countByTimesheetId(long timesheetId) {
+		return getPersistence().countByTimesheetId(timesheetId);
+	}
+
+	/**
 	* Caches the timesheet approval in the entity cache if it is enabled.
 	*
 	* @param timesheetApproval the timesheet approval

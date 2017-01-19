@@ -73,6 +73,9 @@
 			<order-column name="createDate" />
 		</order>
 
+		<finder name="TimesheetId" return-type="Collection">
+			<finder-column name="timesheetId" />
+		</finder>
 	</entity>
 
 	<entity local-service="true" name="TimesheetTask" remote-service="true" uuid="true">
